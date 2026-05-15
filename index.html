@@ -15,6 +15,7 @@
 }
 body{background:var(--bg);color:var(--text);font-family:var(--f);display:flex;flex-direction:column;height:100vh;overflow:hidden}
 
+/* TOPBAR */
 .tb{background:var(--panel);border-bottom:1px solid var(--border);padding:5px 13px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:8px}
 .tt{font-size:13px;font-weight:700}.ts{font-size:10px;color:var(--muted);margin-top:1px}
 .tr{display:flex;align-items:center;gap:6px}
@@ -24,7 +25,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--f);display:flex;fl
 .ib-pdf{border-color:var(--teal);color:var(--teal)}
 .ib-pdf:hover{background:rgba(0,188,212,.12);color:var(--teal)}
 
+/* LAYOUT */
 .sh{display:flex;flex:1;overflow:hidden}
+/* SIDEBAR */
 .sb{width:215px;min-width:215px;background:var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
 .sh2{padding:6px 11px 3px;font-size:9px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;flex-shrink:0}
 .fr{display:flex;gap:4px;padding:4px 8px 5px;flex-shrink:0;border-bottom:1px solid var(--border)}
@@ -41,7 +44,7 @@ select:focus{outline:none;border-color:var(--teal)}
 .ci:hover{background:var(--hover);color:var(--text);border-left-color:var(--border)}
 .ci.on{background:rgba(21,101,192,.18);color:#82c4f8;font-weight:600;border-left-color:var(--teal)}
 #cl::-webkit-scrollbar{width:3px}#cl::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-
+/* MAIN */
 .mn{flex:1;display:flex;flex-direction:column;padding:8px;gap:7px;overflow:hidden}
 .kr{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;flex-shrink:0}
 .kc{background:var(--card);border:1px solid var(--border);border-radius:7px;padding:9px 11px}
@@ -67,7 +70,7 @@ select:focus{outline:none;border-color:var(--teal)}
 .bb:hover{background:var(--hover);color:var(--text)}
 .tw{overflow-y:auto;flex:1;min-height:0}
 .tw::-webkit-scrollbar{width:3px}.tw::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-
+/* TABLES */
 table{width:100%;border-collapse:collapse;font-size:10px;table-layout:fixed}
 th{text-align:left;padding:4px 5px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--border);font-size:8.5px;white-space:nowrap;position:sticky;top:0;background:var(--card);z-index:1}
 td{padding:4px 5px;border-bottom:1px solid rgba(26,48,80,.35);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text)}
@@ -85,11 +88,11 @@ table.txt td.nw{white-space:nowrap;vertical-align:top;padding:5px}
 .bf{height:3px;border-radius:2px}
 .pl{font-size:8px;color:var(--muted);white-space:nowrap}
 .txl{font-size:8px;color:var(--teal);cursor:pointer;text-decoration:underline;margin-left:3px}
-.loading{text-align:center;padding:40px;color:var(--teal);font-size:12px}
 </style>
 </head>
 <body>
 
+<!-- TOPBAR -->
 <div class="tb">
   <div>
     <div class="tt">Dashboard · Orçado x Realizado · Saint Barth</div>
@@ -97,7 +100,7 @@ table.txt td.nw{white-space:nowrap;vertical-align:top;padding:5px}
   </div>
   <div class="tr">
     <span id="bdg">—</span>
-    <button class="ib ib-pdf" id="reload-btn" onclick="location.reload()">
+    <button class="ib ib-pdf" onclick="location.reload()">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
       Recarregar
     </button>
@@ -105,6 +108,7 @@ table.txt td.nw{white-space:nowrap;vertical-align:top;padding:5px}
 </div>
 
 <div class="sh">
+  <!-- SIDEBAR -->
   <div class="sb">
     <div class="sh2" style="margin-top:5px">Período</div>
     <div class="fr">
@@ -118,6 +122,7 @@ table.txt td.nw{white-space:nowrap;vertical-align:top;padding:5px}
     <div id="cl"></div>
   </div>
 
+  <!-- MAIN -->
   <div class="mn">
     <div class="kr">
       <div class="kc"><div class="kl">Orçado</div><div class="kv" id="kv0">—</div><div class="ks" id="ks0">Orçamento mensal</div><div class="kb"><div class="kbf" id="kb0" style="background:var(--blue);width:0"></div></div></div>
@@ -128,17 +133,34 @@ table.txt td.nw{white-space:nowrap;vertical-align:top;padding:5px}
     </div>
     <div class="cc">
       <div class="ch">
-        <div class="ctit"><svg width="11" height="11" viewBox="0 0 24 24" fill="var(--teal)"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/></svg><span id="clbl">Todos os grupos</span></div>
+        <div class="ctit">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="var(--teal)"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/></svg>
+          <span id="clbl">Todos os grupos</span>
+        </div>
         <div style="display:flex;align-items:center;gap:8px">
-          <div class="lgs"><span class="lg"><span class="lsq" style="background:var(--blue)"></span>Orçado</span><span class="lg"><span class="lsq" style="background:var(--orange)"></span>Realizado</span></div>
-          <div class="tbr"><button class="tab on" onclick="CHT.sw('bar',this)">Barras</button><button class="tab" onclick="CHT.sw('exec',this)">Execução %</button></div>
+          <div class="lgs">
+            <span class="lg"><span class="lsq" style="background:var(--blue)"></span>Orçado</span>
+            <span class="lg"><span class="lsq" style="background:var(--orange)"></span>Realizado</span>
+          </div>
+          <div class="tbr">
+            <button class="tab on" onclick="CHT.sw('bar',this)">Barras</button>
+            <button class="tab" onclick="CHT.sw('exec',this)">Execução %</button>
+          </div>
         </div>
       </div>
-      <div style="position:relative;width:100%;height:148px"><canvas id="mc"></canvas></div>
+      <div style="position:relative;width:100%;height:148px">
+        <canvas id="mc" role="img" aria-label="Gráfico orçado x realizado"></canvas>
+      </div>
     </div>
     <div class="dc">
-      <div class="dh"><div class="dtt"><svg width="10" height="10" viewBox="0 0 24 24" fill="var(--teal)"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>Detalhamento — <span class="dl" id="dl">carregando...</span></div><div id="da"></div></div>
-      <div class="tw" id="tw"><div class="loading">📄 Carregando relatório...</div></div>
+      <div class="dh">
+        <div class="dtt">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="var(--teal)"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+          Detalhamento — <span class="dl" id="dl">selecione um grupo</span>
+        </div>
+        <div id="da"></div>
+      </div>
+      <div class="tw" id="tw"></div>
     </div>
   </div>
 </div>
@@ -146,143 +168,151 @@ table.txt td.nw{white-space:nowrap;vertical-align:top;padding:5px}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+/* ═══ PDF.js worker ═══ */
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-const DEFAULT_DATA = {"totalAnual": 0, "grupos": {}, "contas": {}, "tx": []};
+/* ═══ EMBEDDED DEFAULT DATA (fallback) ═══ */
+const DEFAULT_DATA = {"totalAnual": 19169107.2, "grupos": {"Mão de Obra Própria": 3771579.36, "Suporte à Gestão": 634858.68, "Despesas Administrativas": 302275.44, "Serviços Públicos": 3120471.48, "Operação": 8262231.6, "Manutenção": 1761352.08, "Materiais e Patrimônio": 1316338.56}, "contas": {"Mão de Obra Própria|Salários Brutos": 1983850.68, "Mão de Obra Própria|Encargos": 714585.24, "Mão de Obra Própria|13º Salário": 165320.88, "Mão de Obra Própria|Férias": 188465.76, "Mão de Obra Própria|ASO/PPRA/PCMSO": 6600.0, "Mão de Obra Própria|Auxílio Transporte": 76042.92, "Mão de Obra Própria|Auxílio Alimentação": 248094.0, "Mão de Obra Própria|Plano de Saúde": 209036.04, "Mão de Obra Própria|Plano Odontológico": 14755.92, "Mão de Obra Própria|Contribuições Sindicais": 1200.0, "Mão de Obra Própria|Seguro de Vida": 25627.92, "Mão de Obra Própria|Rescisões": 120000.0, "Mão de Obra Própria|Treinamento": 12000.0, "Mão de Obra Própria|Confraternizações / Premiação Equipe": 6000.0, "Suporte à Gestão|Administradora": 99581.04, "Suporte à Gestão|Taxas BCF (E-social, Reinf, Mat.Expediente)": 29907.96, "Suporte à Gestão|Assessoria Administrativa": 141633.0, "Suporte à Gestão|Assessoria Técnica": 167283.6, "Suporte à Gestão|Assessoria Jurídica": 150759.72, "Suporte à Gestão|Auditoria": 6789.36, "Suporte à Gestão|Pró-labore Síndico": 38904.0, "Despesas Administrativas|Licenças de Software": 28887.84, "Despesas Administrativas|Tarifas Bancárias": 17381.04, "Despesas Administrativas|Locação de Rádios": 16677.0, "Despesas Administrativas|Despesas com Assembleias": 12285.0, "Despesas Administrativas|Custas Judiciais e Processos": 46084.56, "Despesas Administrativas|Postais/Telégrafos/Reprografias": 5962.56, "Despesas Administrativas|Uniformes": 44750.28, "Despesas Administrativas|EPI's": 6635.4, "Despesas Administrativas|Internet / Telefone Financeiro": 10419.84, "Despesas Administrativas|Internet Área Comum (Academia, Home office)": 6308.16, "Despesas Administrativas|Telefone Atendimento": 1650.6, "Despesas Administrativas|TV por Assinatura Cinema": 4522.32, "Despesas Administrativas|Celulares Administração": 6971.88, "Despesas Administrativas|Hospedagem de Site e Domínio": 3168.6, "Despesas Administrativas|Internet / TV piscina e bar / TV Cardio": 6551.52, "Despesas Administrativas|Caixa de Pequenas Despesas": 13825.32, "Despesas Administrativas|Seguro Predial Obrigatório": 70193.52, "Serviços Públicos|Água e Esgoto": 742672.32, "Serviços Públicos|Energia Elétrica": 2340597.48, "Serviços Públicos|Gás Natural": 37201.68, "Operação|Operação de Portaria": 1896035.64, "Operação|Operação Courrier": 384860.76, "Operação|Operação CFTV": 538071.48, "Operação|Operação Lider de Equipe": 438263.52, "Operação|Limpeza": 2116272.96, "Operação|Conservação de Jardins": 465964.32, "Operação|Conservação de Piscinas e Lagos": 522470.52, "Operação|Brigada de Incêndio": 355259.64, "Operação|Controle de Pragas e Vetores": 51480.0, "Operação|Limpeza de Cisternas e Caixas de Gordura": 37566.12, "Operação|Medição Individualizada de Água": 31477.8, "Operação|Gestão de Atividades Esportivas": 803523.96, "Operação|Recepção do Clube": 183063.36, "Operação|Manutenção Equipamentos Academia": 24000.0, "Operação|Gestão dos Espaços": 288368.4, "Operação|Eventos": 75240.0, "Operação|Serviços Diversos": 25675.68, "Operação|Teste SPDA": 2194.56, "Operação|Reparos/Serviços/Peças Equipamentos Academia": 22442.88, "Manutenção|Elevadores": 641727.72, "Manutenção|Portões e Cancelas": 18447.72, "Manutenção|Controle de Acesso": 575821.56, "Manutenção|CFTV": 199311.24, "Manutenção|Antenas e Interfones": 41169.36, "Manutenção|Geradores": 9169.56, "Manutenção|Sistema de Pressurização": 30028.2, "Manutenção|Boliche e Autorama": 21749.04, "Manutenção|Tratamento de Água (Torres de refrigeração)": 28049.76, "Manutenção|Sistema de Prevenção a Incêndios": 18969.96, "Manutenção|Retirada de Entulho": 18900.0, "Manutenção|Fundo de Reparo": 95712.96, "Manutenção|Mobiliário de Piscina": 29573.4, "Manutenção|Higienização de Capa dos Elevadores": 17116.32, "Manutenção|Contentores de Lixo 240L": 15605.28, "Materiais e Patrimônio|Materiais de Limpeza": 66000.0, "Materiais e Patrimônio|Materiais de Gestão de Residuos (Sacos de Lixo)": 59251.56, "Materiais e Patrimônio|Materiais de Escritório": 10032.0, "Materiais e Patrimônio|Materiais Hidráulicos": 112860.0, "Materiais e Patrimônio|Materiais Elétricos": 112860.0, "Materiais e Patrimônio|Materiais de Jardinagem": 36000.0, "Materiais e Patrimônio|Materiais de Construção": 72000.0, "Materiais e Patrimônio|Materiais\\Equipamentos de Refrigeração": 79002.0, "Materiais e Patrimônio|Materiais de Pintura": 56096.88, "Materiais e Patrimônio|Materiais de Informática": 14400.0, "Materiais e Patrimônio|Outros Materiais": 36000.0, "Materiais e Patrimônio|Equipamentos e Peças": 17031.0, "Materiais e Patrimônio|Ferramentas": 18000.0, "Materiais e Patrimônio|Móveis e Utensílios": 60000.0, "Materiais e Patrimônio|Outros Patrimoniais": 65835.0, "Materiais e Patrimônio|Materiais Controle de Acesso": 16516.2, "Materiais e Patrimônio|Materiais Antena/Interfone": 3383.28, "Materiais e Patrimônio|Materiais para Clube": 27588.0, "Materiais e Patrimônio|Materiais de Serralheria": 46800.0, "Materiais e Patrimônio|Materiais\\Peças\\Equipamentos Sauna\\Banho Romano\\Ofurô\\Jacuzzi": 13167.0, "Materiais e Patrimônio|Materiais Gerador": 6000.0, "Materiais e Patrimônio|Aquisição de Equipamentos da Academia": 207408.0, "Materiais e Patrimônio|Fundo de Contingência": 180107.64}, "tx": []};
+
+/* active dataset — starts with embedded, replaced on PDF load */
 let RAW = JSON.parse(JSON.stringify(DEFAULT_DATA));
-const ST = { yr: 2026, mo: 4, ann: false, gi: 0, ci: -1 };
-const MN = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-const MY = { 2026: [4,5,6,7,8,9,10,11,12], 2027: [1,2,3] };
-const $ = id => document.getElementById(id);
 
-const fR = n => 'R$ ' + Math.round(Math.abs(n)).toLocaleString('pt-BR');
-const fRs = n => (n < 0 ? '-R$ ' : 'R$ ') + Math.round(Math.abs(n)).toLocaleString('pt-BR');
-const fK = n => { const a = Math.abs(n); return (n < 0 ? '-' : '') + (a >= 1e6 ? (a/1e6).toFixed(1) + 'M' : a >= 1000 ? (a/1000).toFixed(0) + 'k' : Math.round(a) + ''); };
-const fP = n => (n * 100).toFixed(1) + '%';
-const pill = p => p === 0 ? ['Sem exec.','nn'] : p > 1.1 ? ['Acima','ov'] : p > 1 ? ['Atenção','wn'] : ['OK','ok'];
+/* ═══ STATE ═══ */
+const ST={yr:2026,mo:4,ann:false,gi:0,ci:-1};
+const MN=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const MY={2026:[4,5,6,7,8,9,10,11,12],2027:[1,2,3]};
+const $=id=>document.getElementById(id);
 
-const PDFParser = {
-  parseBR(s) { const cleaned = s.replace(/\./g,'').replace(',','.'); const n = parseFloat(cleaned); return isNaN(n) ? null : n; },
-  isBR(s) { return /^\d{1,3}(\.\d{3})*(,\d{2})$/.test(s); },
-  isDate(s) { return /^\d{2}\/\d{2}\/\d{4}$/.test(s); },
-  isDocNum(s) { return /^\d{4,6}$/.test(s); },
+/* ═══ FORMATTERS ═══ */
+const fR=n=>'R$ '+Math.round(Math.abs(n)).toLocaleString('pt-BR');
+const fRs=n=>(n<0?'-R$ ':'R$ ')+Math.round(Math.abs(n)).toLocaleString('pt-BR');
+const fK=n=>{const a=Math.abs(n);return(n<0?'-':'')+(a>=1e6?(a/1e6).toFixed(1)+'M':a>=1000?(a/1000).toFixed(0)+'k':Math.round(a)+'');};
+const fP=n=>(n*100).toFixed(1)+'%';
+const pill=p=>p===0?['Sem exec.','nn']:p>1.1?['Acima','ov']:p>1?['Atenção','wn']:['OK','ok'];
 
+/* ═══ PDF PARSER ═══ */
+const PDF = {
   async loadFromUrl(url) {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const buffer = await response.arrayBuffer();
-    return await this.parseBuffer(buffer);
+    return await this._parseBuffer(buffer);
   },
 
-  async parseBuffer(buffer) {
-    const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
+  async _parseBuffer(buffer) {
+    const pdf = await pdfjsLib.getDocument({data:buffer}).promise;
     const totalPages = pdf.numPages;
     const allLines = [];
-    for (let p = 1; p <= totalPages; p++) {
+    
+    for(let p=1;p<=totalPages;p++){
       const page = await pdf.getPage(p);
       const content = await page.getTextContent();
       const byY = {};
-      for (const item of content.items) {
-        if (!item.str.trim()) continue;
-        const y = Math.round(item.transform[5] / 3) * 3;
-        if (!byY[y]) byY[y] = [];
-        byY[y].push({ x: item.transform[4], text: item.str.trim() });
+      for(const item of content.items){
+        if(!item.str.trim()) continue;
+        const y = Math.round(item.transform[5]/3)*3;
+        if(!byY[y]) byY[y]=[];
+        byY[y].push({x:item.transform[4], text:item.str.trim()});
       }
-      const ys = Object.keys(byY).map(Number).sort((a,b) => b - a);
-      for (const y of ys) {
-        const items = byY[y].sort((a,b) => a.x - b.x);
-        allLines.push(items.map(i => i.text));
+      const ys = Object.keys(byY).map(Number).sort((a,b)=>b-a);
+      for(const y of ys){
+        const items = byY[y].sort((a,b)=>a.x-b.x);
+        allLines.push(items.map(i=>i.text));
       }
     }
-    return this.parseLines(allLines);
+    
+    return this._parseLines(allLines);
   },
 
-  parseLines(lines) {
+  _parseLines(lines){
+    const parseBR = s => { const cleaned = s.replace(/\./g,'').replace(',','.'); const n = parseFloat(cleaned); return isNaN(n)?null:n; };
+    const isBR = s => /^\d{1,3}(\.\d{3})*(,\d{2})$/.test(s);
+    const isDate = s => /^\d{2}\/\d{2}\/\d{4}$/.test(s);
+    const isDocNum = s => /^\d{4,6}$/.test(s);
+
     const grupos = {};
     const contas = {};
     const tx = [];
-    let curG = '';
-    let curC = '';
+    let curG = '', curC = '';
 
-    for (const tokens of lines) {
+    for(const tokens of lines){
       const flat = tokens.join(' ').trim();
-      if (!flat) continue;
-      if (flat.startsWith('Período') || flat.startsWith('Orçamento:') ||
-          flat.startsWith('PÁG.') || flat.startsWith('ORÇADO x') ||
-          flat.startsWith('Emitido') || flat.includes('Sistema de Gestão')) continue;
+      if(!flat) continue;
+      if(flat.startsWith('Período') || flat.startsWith('Orçamento:') ||
+         flat.startsWith('PÁG.') || flat.startsWith('ORÇADO x') ||
+         flat.startsWith('Emitido')) continue;
 
-      if (flat.startsWith('Grupo:')) {
-        const groupMatch = flat.match(/^Grupo:\s*(.+?)(?:\s+\d{1,3}(?:\.\d{3})*,\d{2})/);
-        if (groupMatch) {
-          curG = groupMatch[1].trim();
+      if(flat.startsWith('Grupo:')){
+        const nameMatch = flat.match(/^Grupo:\s*(.+?)(?:\s+\d{1,3}[\.,])/);
+        if(nameMatch){
+          curG = nameMatch[1].trim();
           curC = '';
-        } else {
-          let rest = flat.replace('Grupo:', '').trim();
-          const numMatch = rest.match(/\d{1,3}(?:\.\d{3})*,\d{2}/);
-          if (numMatch) rest = rest.substring(0, rest.indexOf(numMatch[0])).trim();
-          curG = rest;
-          curC = '';
+          const nums = tokens.filter(t=>isBR(t)).map(parseBR);
+          if(nums.length>0 && nums[0]>0) grupos[curG] = nums[0];
         }
         continue;
       }
 
-      const brNumbers = tokens.filter(t => this.isBR(t));
-      if (brNumbers.length >= 2 && curG) {
-        const nameParts = tokens.filter(t => !this.isBR(t) && !this.isDate(t) && !this.isDocNum(t) && !t.includes('PARCELA') && !t.includes('/'));
-        let possibleName = nameParts.join(' ').trim();
-        if (possibleName && !possibleName.startsWith('Período') && !possibleName.startsWith('Grupo') &&
-            !possibleName.startsWith('Orçado') && !possibleName.startsWith('Realizado') &&
-            !possibleName.startsWith('Saldo') && !possibleName.startsWith('Execução') &&
-            !possibleName.startsWith('Status') && possibleName.length > 2) {
-          curC = possibleName;
-          const orcValue = this.parseBR(brNumbers[0]);
-          if (orcValue && orcValue > 0) contas[curG + '|' + curC] = orcValue;
-        }
-      }
-
-      if (this.isDate(tokens[0])) {
+      if(isDate(tokens[0])){
         const dateParts = tokens[0].split('/');
         const d = tokens[0];
         const m = parseInt(dateParts[1]);
         const a = parseInt(dateParts[2]);
+        
         let docIdx = -1;
-        for (let i = 1; i < Math.min(5, tokens.length); i++) {
-          if (this.isDocNum(tokens[i])) { docIdx = i; break; }
+        for(let i=1;i<Math.min(4,tokens.length);i++){
+          if(isDocNum(tokens[i])){docIdx=i;break;}
         }
-        const doc = docIdx >= 0 ? tokens[docIdx] : '';
-        const lastTok = tokens[tokens.length - 1];
-        const val = this.isBR(lastTok) ? this.parseBR(lastTok) : null;
-        if (val && val > 0 && curG && curC) {
-          let startIdx = docIdx >= 0 ? docIdx + 1 : 1;
-          let descTokens = tokens.slice(startIdx, tokens.length - 1);
-          if (descTokens[0] === 'PARCELA' || descTokens[0] === 'PARCELA  DE') descTokens = descTokens.slice(2);
-          if (descTokens[0] === 'DE') descTokens = descTokens.slice(1);
-          const dsc = descTokens.join(' ').trim();
-          tx.push({ g: curG, c: curC, a, m, d, doc, dsc, v: Math.round(val * 100) / 100 });
+        const doc = docIdx>=0 ? tokens[docIdx] : '';
+        
+        const lastTok = tokens[tokens.length-1];
+        const val = isBR(lastTok) ? parseBR(lastTok) : null;
+        if(!val || val<=0 || !curG || !curC) continue;
+        
+        const startIdx = docIdx>=0 ? docIdx+1 : 1;
+        const descTokens = tokens.slice(startIdx, tokens.length-1);
+        if(descTokens[0]==='PARCELA' && descTokens[1]==='DE') descTokens.splice(0,2);
+        else if(descTokens[0]==='PARCELA  DE') descTokens.splice(0,1);
+        const dsc = descTokens.join(' ').trim();
+        
+        tx.push({g:curG, c:curC, a, m, d, doc, dsc, v:Math.round(val*100)/100});
+        continue;
+      }
+
+      const brNums = tokens.filter(t=>isBR(t));
+      if(brNums.length>=2 && curG){
+        const nameParts = tokens.filter(t=>!isBR(t)&&!isDate(t)&&!isDocNum(t));
+        const name = nameParts.join(' ').trim();
+        if(name && name.length>2 && !name.startsWith('Período') && !name.startsWith('Grupo')){
+          const orc = parseBR(brNums[0]);
+          if(orc && orc>0){
+            curC = name;
+            contas[curG+'|'+curC] = orc;
+          }
         }
       }
     }
 
-    const groupTotals = {};
-    for (const [key, orc] of Object.entries(contas)) {
-      const group = key.split('|')[0];
-      if (!groupTotals[group]) groupTotals[group] = 0;
-      groupTotals[group] += orc;
-    }
-    
-    tx.sort((a,b) => {
-      if (a.a !== b.a) return a.a - b.a;
-      if (a.m !== b.m) return a.m - b.m;
-      const da = parseInt(a.d.split('/')[0]), db = parseInt(b.d.split('/')[0]);
-      return da - db;
+    tx.sort((a,b)=>{
+      if(a.a!==b.a)return a.a-b.a;
+      if(a.m!==b.m)return a.m-b.m;
+      const da=parseInt(a.d.split('/')[0]),db=parseInt(b.d.split('/')[0]);
+      return da-db;
     });
 
-    console.log('📊 Grupos:', Object.keys(groupTotals).length);
-    console.log('📊 Contas:', Object.keys(contas).length);
-    console.log('📊 Transações:', tx.length);
+    const groupTotals = {};
+    for(const [key, orc] of Object.entries(contas)){
+      const group = key.split('|')[0];
+      if(!groupTotals[group]) groupTotals[group] = 0;
+      groupTotals[group] += orc;
+    }
+
+    console.log('✅ Grupos:', Object.keys(groupTotals).length);
+    console.log('✅ Contas:', Object.keys(contas).length);
+    console.log('✅ Transações:', tx.length);
 
     return {
-      totalAnual: Object.values(groupTotals).reduce((s,v) => s + v, 0),
+      totalAnual: Object.values(groupTotals).reduce((s,v)=>s+v,0),
       grupos: groupTotals,
       contas: contas,
       tx: tx
@@ -290,84 +320,8 @@ const PDFParser = {
   }
 };
 
-const DQ = {
-  txFor(g, c) {
-    if (ST.ann) return RAW.tx.filter(t => t.g === g && t.c === c);
-    return RAW.tx.filter(t => t.g === g && t.c === c && t.a === ST.yr && t.m === ST.mo);
-  },
-  real(g, c) { return this.txFor(g, c).reduce((s, t) => s + t.v, 0); },
-  orc(g, c) { const v = RAW.contas[g + '|' + c] || 0; return ST.ann ? v : v / 12; },
-  grupos() { return Object.keys(RAW.grupos); },
-  contas(g) { return Object.keys(RAW.contas).filter(k => k.startsWith(g + '|')).map(k => k.slice(g.length + 1)); },
-  buildVM() {
-    return this.grupos().map(g => {
-      const cts = this.contas(g).map(c => {
-        const orc = this.orc(g, c), real = this.real(g, c), saldo = orc - real, pct = orc > 0 ? real / orc : 0;
-        return { g, c, orc, real, saldo, pct };
-      });
-      const gO = ST.ann ? (RAW.grupos[g] || 0) : (RAW.grupos[g] || 0) / 12;
-      const gR = cts.reduce((s, x) => s + x.real, 0);
-      return { name: g, orc: gO, real: gR, saldo: gO - gR, pct: gO > 0 ? gR / gO : 0, cts };
-    });
-  }
-};
-
-const F = {
-  _bY() { $('sy').innerHTML = Object.keys(MY).map(y => `<option value="${y}"${+y === ST.yr ? ' selected' : ''}>${y}</option>`).join(''); },
-  _bM() { const ms = MY[ST.yr] || []; if (!ms.includes(ST.mo)) ST.mo = ms[0]; $('sm').innerHTML = ms.map(m => `<option value="${m}"${m === ST.mo ? ' selected' : ''}>${MN[m-1]}</option>`).join(''); },
-  yr() { const ny = parseInt($('sy').value); if (ny !== ST.yr) { ST.yr = ny; this._bM(); } ST.mo = parseInt($('sm').value); ST.ann = false; $('ab').classList.remove('on'); R.refresh(); },
-  mo() { ST.mo = parseInt($('sm').value); ST.ann = false; $('ab').classList.remove('on'); R.refresh(); },
-  ann() { ST.ann = !ST.ann; $('ab').classList.toggle('on', ST.ann); R.refresh(); },
-  init() { this._bY(); this._bM(); }
-};
-
-let CH = null;
-const CHT = {
-  mode: 'bar',
-  init(vm) { if (CH) { CH.destroy(); CH = null; } const lc = '#5a7a90', gc = 'rgba(255,255,255,.04)'; CH = new Chart($('mc'), { type: 'bar', data: { labels: [], datasets: [] }, options: { responsive: true, maintainAspectRatio: false, animation: { duration: 250 }, plugins: { legend: { display: false }, tooltip: { backgroundColor: '#0b1a2e', borderColor: '#1a3050', borderWidth: 1, titleColor: '#dce9f8', bodyColor: '#6a8faa', callbacks: { label: ctx => ' ' + fR(ctx.parsed.y) } } }, scales: { x: { grid: { display: false }, ticks: { color: lc, font: { size: 8 } }, border: { display: false } }, y: { grid: { color: gc }, border: { display: false }, ticks: { color: lc, font: { size: 8 }, callback: v => fK(v) } } } }); this.upd(vm); },
-  upd(vm) { if (!CH) return; const g = vm[ST.gi]; if (!g) return; const src = ST.ci >= 0 ? [g.cts[ST.ci]] : g.cts; const bp = src.length > 14 ? 0.3 : src.length > 8 ? 0.42 : src.length > 4 ? 0.55 : 0.65; const lbs = src.map(s => s.c.length > 13 ? s.c.slice(0,13) + '…' : s.c); if (this.mode === 'bar') { CH.data.datasets = [{ label: 'Orçado', data: src.map(s => Math.round(s.orc)), backgroundColor: '#1565C0', borderRadius: 3, borderSkipped: false, barPercentage: bp }, { label: 'Realizado', data: src.map(s => Math.round(s.real)), backgroundColor: '#E65100', borderRadius: 3, borderSkipped: false, barPercentage: bp }]; CH.options.scales.y.ticks.callback = v => fK(v); } else { CH.data.datasets = [{ label: '%', data: src.map(s => parseFloat((s.pct * 100).toFixed(1))), backgroundColor: src.map(s => s.pct > 1 ? '#FF5252' : s.pct > 0.8 ? '#00C853' : '#E65100'), borderRadius: 3, borderSkipped: false, barPercentage: bp }]; CH.options.scales.y.ticks.callback = v => v + '%'; } CH.data.labels = lbs; CH.update(); },
-  sw(m, btn) { this.mode = m; document.querySelectorAll('.tab').forEach(t => t.classList.remove('on')); btn.classList.add('on'); CHT.upd(R._vm || DQ.buildVM()); }
-};
-
-const R = {
-  _vm: null, boot() { this._vm = DQ.buildVM(); this._top(); this._kpis(this._vm); if (!CH) CHT.init(this._vm); else CHT.upd(this._vm); this._detail(this._vm); this._sb(this._vm); },
-  refresh() { this._vm = DQ.buildVM(); this._top(); this._kpis(this._vm); CHT.upd(this._vm); this._detail(this._vm); this._sb(this._vm); },
-  _top() { const lbl = ST.ann ? 'Consolidado Anual 04/2026–03/2027' : `${MN[ST.mo-1]}/${ST.yr}`; $('ts').textContent = `Saint Barth · ${lbl} · ${RAW.tx.length} lançamentos carregados`; const vm = this._vm || DQ.buildVM(); const tO = vm.reduce((s,g) => s + g.orc, 0), tR = vm.reduce((s,g) => s + g.real, 0); $('bdg').textContent = 'Execução: ' + fP(tO > 0 ? tR / tO : 0); $('kv4').textContent = RAW.tx.length; },
-  _sk(orc, real, saldo, a3) { const pct = orc > 0 ? real / orc : 0; $('kv0').textContent = fR(orc); $('kv1').textContent = fR(real); $('ks1').textContent = fP(pct) + ' do orçado'; $('kv2').textContent = fRs(saldo); $('kv3').textContent = a3; $('kb0').style.width = '100%'; $('kb1').style.width = Math.min(pct * 100, 100) + '%'; $('kb2').style.width = Math.min((1 - Math.min(pct, 1)) * 100, 100) + '%'; },
-  _kpis(vm) { const tO = vm.reduce((s,g) => s + g.orc, 0), tR = vm.reduce((s,g) => s + g.real, 0); const al = vm.reduce((s,g) => s + g.cts.filter(c => c.pct > 1.05).length, 0); this._sk(tO, tR, tO - tR, al + ' ite' + (al === 1 ? 'm' : 'ns')); },
-  _kpisG(g) { const al = g.cts.filter(c => c.pct > 1.05).length; this._sk(g.orc, g.real, g.saldo, al + ' ite' + (al === 1 ? 'm' : 'ns')); },
-  _kpisC(c) { const [l] = pill(c.pct); this._sk(c.orc, c.real, c.saldo, l); },
-  _sb(vm) { $('gl').innerHTML = vm.map((g, i) => `<div class="gi${i === ST.gi ? ' on' : ''}" onclick="SB.g(${i}, this)">${g.name}</div>`).join(''); this._cl(vm); },
-  _cl(vm) { const g = vm[ST.gi]; $('cl').innerHTML = (g?.cts || []).map((c, i) => `<div class="ci${i === ST.ci ? ' on' : ''}" onclick="SB.c(${i}, this)">${c.c}</div>`).join(''); },
-  _detail(vm, hGi = -1, hCi = -1) { $('da').innerHTML = ''; const gi = hGi >= 0 ? hGi : ST.gi; const grp = vm[gi]; if (!grp) return; $('dl').textContent = ST.ann ? grp.name + ' (anual)' : grp.name; const rowC = (c, gi2, ci2, hl) => { const [pl, pc] = pill(c.pct); const bw = Math.min(c.pct, 1) * 44, bc = c.pct > 1 ? '#FF5252' : c.pct > 0.8 ? '#00C853' : '#E65100'; const txs = DQ.txFor(c.g, c.c); const lnk = txs.length > 0 ? `<span class="txl" onclick="R.showTx(${gi2}, ${ci2}, event)">▶ ${txs.length} lançamento${txs.length > 1 ? 's' : ''}</span>` : `<span style="font-size:8px;color:#2a4060;margin-left:3px">sem lançamentos</span>`; return `<tr class="sr${hl ? ' sel' : ''}" onclick="SB.cT(${gi2}, ${ci2}, this)"><td>${c.c}${lnk}</td><td style="text-align:right;color:var(--muted)">${fR(c.orc)}</td><td style="text-align:right">${c.real > 0 ? fR(c.real) : '—'}</td><td style="text-align:right;color:${c.saldo < 0 ? 'var(--red)' : 'var(--muted)'}">${fRs(c.saldo)}</td><td><div class="bc"><div class="bg"><div class="bf" style="width:${bw}px;background:${bc}"></div></div><span class="pl">${(c.pct * 100).toFixed(0)}%</span></div></td><td style="text-align:center"><span class="pill ${pc}">${pl}</span></td></tr>`; };
-    let html = ''; if (hCi < 0) { const [gl, gc] = pill(grp.pct); const bw = Math.min(grp.pct, 1) * 44, bc = grp.pct > 1 ? '#FF5252' : grp.pct > 0.8 ? '#00C853' : '#E65100'; html = `<tr class="gr sel" onclick="SB.gT(${gi}, this)"><td>${grp.name}</td><td style="text-align:right">${fR(grp.orc)}</td><td style="text-align:right;color:var(--green)">${fR(grp.real)}</td><td style="text-align:right;color:${grp.saldo < 0 ? 'var(--red)' : 'var(--gold)'}">${fRs(grp.saldo)}</td><td><div class="bc"><div class="bg"><div class="bf" style="width:${bw}px;background:${bc}"></div></div><span class="pl">${(grp.pct * 100).toFixed(0)}%</span></div></td><td style="text-align:center"><span class="pill ${gc}">${gl}</span></td></tr>` + grp.cts.map((c, ci) => rowC(c, gi, ci, ci === hCi)).join(''); } else { const c = grp.cts[hCi]; if (!c) return; html = rowC(c, gi, hCi, true); const txs = DQ.txFor(c.g, c.c); if (txs.length > 0) $('da').innerHTML = `<button class="bb" onclick="R.showTx(${gi}, ${hCi}, event)">▶ Ver ${txs.length} lançamento${txs.length > 1 ? 's' : ''}</button>`; } $('tw').innerHTML = `<table><colgroup><col style="width:29%"><col style="width:14%"><col style="width:14%"><col style="width:12%"><col style="width:22%"><col style="width:9%"></colgroup><thead><tr><th>Conta</th><th style="text-align:right">Orçado</th><th style="text-align:right">Realizado</th><th style="text-align:right">Saldo</th><th>Execução</th><th style="text-align:center">Status</th></tr></thead><tbody>${html}</tbody></table>`; },
-  showTx(gi, ci, e) { if (e) e.stopPropagation(); const vm = this._vm; if (!vm) return; const c = vm[gi]?.cts[ci]; if (!c) return; const txs = DQ.txFor(c.g, c.c); const tot = txs.reduce((s, t) => s + t.v, 0); const per = ST.ann ? '04/2026–03/2027' : `${MN[ST.mo-1]}/${ST.yr}`; $('dl').textContent = c.c + ' — Lançamentos'; $('da').innerHTML = `<button class="bb" onclick="R.back(${gi}, ${ci})">← Voltar</button>`; if (txs.length === 0) { $('tw').innerHTML = `<div style="text-align:center;padding:20px;color:var(--muted);font-size:11px">Nenhum lançamento em ${per}</div>`; return; } const byM = {}; for (const t of txs) { const k = t.m + '/' + t.a; if (!byM[k]) byM[k] = { m: t.m, a: t.a, items: [] }; byM[k].items.push(t); } const mkSort = k => { const [m, a] = k.split('/'); return +a * 100 + +m; }; let rows = ''; for (const mk of Object.keys(byM).sort((a, b) => mkSort(a) - mkSort(b))) { const { m, a, items } = byM[mk]; const mTot = items.reduce((s, t) => s + t.v, 0); rows += `<tr style="background:rgba(0,188,212,.07)"><td colspan="3" style="padding:5px;font-size:9px;font-weight:700;color:var(--teal);border-bottom:1px solid var(--border)">${MN[m-1]}/${a} · <span style="font-weight:400;color:var(--muted)">${items.length} lançamento${items.length > 1 ? 's' : ''}</span></td><td style="text-align:right;padding:5px;font-size:9px;font-weight:700;color:var(--teal);border-bottom:1px solid var(--border)">${fR(mTot)}</td></tr>`; for (const t of items) { rows += `<tr><td class="nw" style="color:var(--muted);font-size:9px">${t.d}</td><td class="nw" style="color:var(--teal);font-size:9px">${t.doc}</td><td style="font-size:9.5px;line-height:1.5;white-space:normal;word-break:break-word;color:var(--text)">${t.dsc}</td><td style="text-align:right;font-weight:600;white-space:nowrap;color:var(--text)">${fR(t.v)}</td></tr>`; } } $('tw').innerHTML = `<table class="txt"><colgroup><col style="width:9%"><col style="width:7%"><col style="width:67%"><col style="width:17%"></colgroup><thead><tr><th>Data</th><th>Doc.</th><th>Descrição</th><th style="text-align:right">Valor</th></tr></thead><tbody>${rows}</tbody><tfoot><tr style="border-top:2px solid var(--border)"><td colspan="3" style="padding:6px 5px;font-size:9.5px;color:var(--muted);font-weight:600">Total — ${per}</td><td style="text-align:right;padding:6px 5px;font-size:11px;font-weight:700;color:var(--green)">${fR(tot)}</td></tr></tfoot></table>`; },
-  back(gi, ci) { this._detail(this._vm, gi, ci); }
-};
-
-const SB = {
-  g(i, el) { ST.gi = i; ST.ci = -1; document.querySelectorAll('.gi').forEach(e => e.classList.remove('on')); el.classList.add('on'); const vm = R._vm; if (!vm) return; R._cl(vm); R._kpisG(vm[i]); R._detail(vm, i, -1); CHT.upd(vm); $('clbl').textContent = vm[i].name + (ST.ann ? ' (anual)' : ''); },
-  c(i, el) { ST.ci = i; document.querySelectorAll('.ci').forEach(e => e.classList.remove('on')); el.classList.add('on'); const vm = R._vm; if (!vm) return; const c = vm[ST.gi]?.cts[i]; if (!c) return; R._kpisC(c); R._detail(vm, ST.gi, i); CHT.upd(vm); $('clbl').textContent = c.c + (ST.ann ? ' (anual)' : ''); },
-  cT(gi, ci, el) { ST.gi = gi; ST.ci = ci; document.querySelectorAll('.gi').forEach((e, idx) => e.classList.toggle('on', idx === gi)); const vm = R._vm; if (!vm) return; R._cl(vm); document.querySelectorAll('.ci').forEach((e, idx) => e.classList.toggle('on', idx === ci)); const c = vm[gi]?.cts[ci]; if (!c) return; R._kpisC(c); R._detail(vm, gi, ci); CHT.upd(vm); },
-  gT(gi, el) { const g = $('gl'); this.g(gi, g.children[gi] || el); }
-};
-
-async function loadPDFAndInit() {
-  try {
-    $('ts').textContent = 'Saint Barth · Carregando relatório PDF...';
-    const parsedData = await PDFParser.loadFromUrl('relatorio.pdf');
-    RAW = parsedData;
-    $('ts').textContent = `Saint Barth · ${RAW.tx.length} lançamentos carregados do PDF`;
-    console.log(`✅ PDF carregado: ${RAW.tx.length} transações, ${Object.keys(RAW.contas).length} contas`);
-  } catch (err) {
-    console.error('Erro ao carregar PDF:', err);
-    $('ts').textContent = '⚠️ Usando dados padrão (PDF não encontrado)';
-  }
-  F.init();
-  R.boot();
-}
-
-loadPDFAndInit();
-</script>
-</body>
-</html>
+/* ═══ DATA QUERIES ═══ */
+const DQ={
+  txFor(g,c){
+    if(ST.ann) return RAW.tx.filter(t=>t.g===g&&t.c===c);
+    return RAW.tx.filter(t=>t.g
