@@ -27,7 +27,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--f);display:flex;fl
 
 /* LAYOUT */
 .sh{display:flex;flex:1;overflow:hidden}
-/* SIDEBAR */
 .sb{width:215px;min-width:215px;background:var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
 .sh2{padding:6px 11px 3px;font-size:9px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;flex-shrink:0}
 .fr{display:flex;gap:4px;padding:4px 8px 5px;flex-shrink:0;border-bottom:1px solid var(--border)}
@@ -44,7 +43,6 @@ select:focus{outline:none;border-color:var(--teal)}
 .ci:hover{background:var(--hover);color:var(--text);border-left-color:var(--border)}
 .ci.on{background:rgba(21,101,192,.18);color:#82c4f8;font-weight:600;border-left-color:var(--teal)}
 #cl::-webkit-scrollbar{width:3px}#cl::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-/* MAIN */
 .mn{flex:1;display:flex;flex-direction:column;padding:8px;gap:7px;overflow:hidden}
 .kr{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;flex-shrink:0}
 .kc{background:var(--card);border:1px solid var(--border);border-radius:7px;padding:9px 11px}
@@ -70,7 +68,6 @@ select:focus{outline:none;border-color:var(--teal)}
 .bb:hover{background:var(--hover);color:var(--text)}
 .tw{overflow-y:auto;flex:1;min-height:0}
 .tw::-webkit-scrollbar{width:3px}.tw::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-/* TABLES */
 table{width:100%;border-collapse:collapse;font-size:10px;table-layout:fixed}
 th{text-align:left;padding:4px 5px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--border);font-size:8.5px;white-space:nowrap;position:sticky;top:0;background:var(--card);z-index:1}
 td{padding:4px 5px;border-bottom:1px solid rgba(26,48,80,.35);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text)}
@@ -92,7 +89,6 @@ table.txt td.nw{white-space:nowrap;vertical-align:top;padding:5px}
 </head>
 <body>
 
-<!-- TOPBAR -->
 <div class="tb">
   <div>
     <div class="tt">Dashboard · Orçado x Realizado · Saint Barth</div>
@@ -108,7 +104,6 @@ table.txt td.nw{white-space:nowrap;vertical-align:top;padding:5px}
 </div>
 
 <div class="sh">
-  <!-- SIDEBAR -->
   <div class="sb">
     <div class="sh2" style="margin-top:5px">Período</div>
     <div class="fr">
@@ -122,7 +117,6 @@ table.txt td.nw{white-space:nowrap;vertical-align:top;padding:5px}
     <div id="cl"></div>
   </div>
 
-  <!-- MAIN -->
   <div class="mn">
     <div class="kr">
       <div class="kc"><div class="kl">Orçado</div><div class="kv" id="kv0">—</div><div class="ks" id="ks0">Orçamento mensal</div><div class="kb"><div class="kbf" id="kb0" style="background:var(--blue);width:0"></div></div></div>
@@ -133,33 +127,13 @@ table.txt td.nw{white-space:nowrap;vertical-align:top;padding:5px}
     </div>
     <div class="cc">
       <div class="ch">
-        <div class="ctit">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="var(--teal)"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/></svg>
-          <span id="clbl">Todos os grupos</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <div class="lgs">
-            <span class="lg"><span class="lsq" style="background:var(--blue)"></span>Orçado</span>
-            <span class="lg"><span class="lsq" style="background:var(--orange)"></span>Realizado</span>
-          </div>
-          <div class="tbr">
-            <button class="tab on" onclick="CHT.sw('bar',this)">Barras</button>
-            <button class="tab" onclick="CHT.sw('exec',this)">Execução %</button>
-          </div>
-        </div>
+        <div class="ctit"><svg width="11" height="11" viewBox="0 0 24 24" fill="var(--teal)"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/></svg><span id="clbl">Todos os grupos</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><div class="lgs"><span class="lg"><span class="lsq" style="background:var(--blue)"></span>Orçado</span><span class="lg"><span class="lsq" style="background:var(--orange)"></span>Realizado</span></div><div class="tbr"><button class="tab on" onclick="CHT.sw('bar',this)">Barras</button><button class="tab" onclick="CHT.sw('exec',this)">Execução %</button></div></div>
       </div>
-      <div style="position:relative;width:100%;height:148px">
-        <canvas id="mc" role="img" aria-label="Gráfico orçado x realizado"></canvas>
-      </div>
+      <div style="position:relative;width:100%;height:148px"><canvas id="mc"></canvas></div>
     </div>
     <div class="dc">
-      <div class="dh">
-        <div class="dtt">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="var(--teal)"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
-          Detalhamento — <span class="dl" id="dl">selecione um grupo</span>
-        </div>
-        <div id="da"></div>
-      </div>
+      <div class="dh"><div class="dtt"><svg width="10" height="10" viewBox="0 0 24 24" fill="var(--teal)"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>Detalhamento — <span class="dl" id="dl">selecione um grupo</span></div><div id="da"></div></div>
       <div class="tw" id="tw"></div>
     </div>
   </div>
@@ -168,29 +142,22 @@ table.txt td.nw{white-space:nowrap;vertical-align:top;padding:5px}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
-/* ═══ PDF.js worker ═══ */
-pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-/* ═══ EMBEDDED DEFAULT DATA (fallback) ═══ */
 const DEFAULT_DATA = {"totalAnual": 19169107.2, "grupos": {"Mão de Obra Própria": 3771579.36, "Suporte à Gestão": 634858.68, "Despesas Administrativas": 302275.44, "Serviços Públicos": 3120471.48, "Operação": 8262231.6, "Manutenção": 1761352.08, "Materiais e Patrimônio": 1316338.56}, "contas": {"Mão de Obra Própria|Salários Brutos": 1983850.68, "Mão de Obra Própria|Encargos": 714585.24, "Mão de Obra Própria|13º Salário": 165320.88, "Mão de Obra Própria|Férias": 188465.76, "Mão de Obra Própria|ASO/PPRA/PCMSO": 6600.0, "Mão de Obra Própria|Auxílio Transporte": 76042.92, "Mão de Obra Própria|Auxílio Alimentação": 248094.0, "Mão de Obra Própria|Plano de Saúde": 209036.04, "Mão de Obra Própria|Plano Odontológico": 14755.92, "Mão de Obra Própria|Contribuições Sindicais": 1200.0, "Mão de Obra Própria|Seguro de Vida": 25627.92, "Mão de Obra Própria|Rescisões": 120000.0, "Mão de Obra Própria|Treinamento": 12000.0, "Mão de Obra Própria|Confraternizações / Premiação Equipe": 6000.0, "Suporte à Gestão|Administradora": 99581.04, "Suporte à Gestão|Taxas BCF (E-social, Reinf, Mat.Expediente)": 29907.96, "Suporte à Gestão|Assessoria Administrativa": 141633.0, "Suporte à Gestão|Assessoria Técnica": 167283.6, "Suporte à Gestão|Assessoria Jurídica": 150759.72, "Suporte à Gestão|Auditoria": 6789.36, "Suporte à Gestão|Pró-labore Síndico": 38904.0, "Despesas Administrativas|Licenças de Software": 28887.84, "Despesas Administrativas|Tarifas Bancárias": 17381.04, "Despesas Administrativas|Locação de Rádios": 16677.0, "Despesas Administrativas|Despesas com Assembleias": 12285.0, "Despesas Administrativas|Custas Judiciais e Processos": 46084.56, "Despesas Administrativas|Postais/Telégrafos/Reprografias": 5962.56, "Despesas Administrativas|Uniformes": 44750.28, "Despesas Administrativas|EPI's": 6635.4, "Despesas Administrativas|Internet / Telefone Financeiro": 10419.84, "Despesas Administrativas|Internet Área Comum (Academia, Home office)": 6308.16, "Despesas Administrativas|Telefone Atendimento": 1650.6, "Despesas Administrativas|TV por Assinatura Cinema": 4522.32, "Despesas Administrativas|Celulares Administração": 6971.88, "Despesas Administrativas|Hospedagem de Site e Domínio": 3168.6, "Despesas Administrativas|Internet / TV piscina e bar / TV Cardio": 6551.52, "Despesas Administrativas|Caixa de Pequenas Despesas": 13825.32, "Despesas Administrativas|Seguro Predial Obrigatório": 70193.52, "Serviços Públicos|Água e Esgoto": 742672.32, "Serviços Públicos|Energia Elétrica": 2340597.48, "Serviços Públicos|Gás Natural": 37201.68, "Operação|Operação de Portaria": 1896035.64, "Operação|Operação Courrier": 384860.76, "Operação|Operação CFTV": 538071.48, "Operação|Operação Lider de Equipe": 438263.52, "Operação|Limpeza": 2116272.96, "Operação|Conservação de Jardins": 465964.32, "Operação|Conservação de Piscinas e Lagos": 522470.52, "Operação|Brigada de Incêndio": 355259.64, "Operação|Controle de Pragas e Vetores": 51480.0, "Operação|Limpeza de Cisternas e Caixas de Gordura": 37566.12, "Operação|Medição Individualizada de Água": 31477.8, "Operação|Gestão de Atividades Esportivas": 803523.96, "Operação|Recepção do Clube": 183063.36, "Operação|Manutenção Equipamentos Academia": 24000.0, "Operação|Gestão dos Espaços": 288368.4, "Operação|Eventos": 75240.0, "Operação|Serviços Diversos": 25675.68, "Operação|Teste SPDA": 2194.56, "Operação|Reparos/Serviços/Peças Equipamentos Academia": 22442.88, "Manutenção|Elevadores": 641727.72, "Manutenção|Portões e Cancelas": 18447.72, "Manutenção|Controle de Acesso": 575821.56, "Manutenção|CFTV": 199311.24, "Manutenção|Antenas e Interfones": 41169.36, "Manutenção|Geradores": 9169.56, "Manutenção|Sistema de Pressurização": 30028.2, "Manutenção|Boliche e Autorama": 21749.04, "Manutenção|Tratamento de Água (Torres de refrigeração)": 28049.76, "Manutenção|Sistema de Prevenção a Incêndios": 18969.96, "Manutenção|Retirada de Entulho": 18900.0, "Manutenção|Fundo de Reparo": 95712.96, "Manutenção|Mobiliário de Piscina": 29573.4, "Manutenção|Higienização de Capa dos Elevadores": 17116.32, "Manutenção|Contentores de Lixo 240L": 15605.28, "Materiais e Patrimônio|Materiais de Limpeza": 66000.0, "Materiais e Patrimônio|Materiais de Gestão de Residuos (Sacos de Lixo)": 59251.56, "Materiais e Patrimônio|Materiais de Escritório": 10032.0, "Materiais e Patrimônio|Materiais Hidráulicos": 112860.0, "Materiais e Patrimônio|Materiais Elétricos": 112860.0, "Materiais e Patrimônio|Materiais de Jardinagem": 36000.0, "Materiais e Patrimônio|Materiais de Construção": 72000.0, "Materiais e Patrimônio|Materiais\\Equipamentos de Refrigeração": 79002.0, "Materiais e Patrimônio|Materiais de Pintura": 56096.88, "Materiais e Patrimônio|Materiais de Informática": 14400.0, "Materiais e Patrimônio|Outros Materiais": 36000.0, "Materiais e Patrimônio|Equipamentos e Peças": 17031.0, "Materiais e Patrimônio|Ferramentas": 18000.0, "Materiais e Patrimônio|Móveis e Utensílios": 60000.0, "Materiais e Patrimônio|Outros Patrimoniais": 65835.0, "Materiais e Patrimônio|Materiais Controle de Acesso": 16516.2, "Materiais e Patrimônio|Materiais Antena/Interfone": 3383.28, "Materiais e Patrimônio|Materiais para Clube": 27588.0, "Materiais e Patrimônio|Materiais de Serralheria": 46800.0, "Materiais e Patrimônio|Materiais\\Peças\\Equipamentos Sauna\\Banho Romano\\Ofurô\\Jacuzzi": 13167.0, "Materiais e Patrimônio|Materiais Gerador": 6000.0, "Materiais e Patrimônio|Aquisição de Equipamentos da Academia": 207408.0, "Materiais e Patrimônio|Fundo de Contingência": 180107.64}, "tx": []};
 
-/* active dataset — starts with embedded, replaced on PDF load */
 let RAW = JSON.parse(JSON.stringify(DEFAULT_DATA));
+const ST = { yr: 2026, mo: 4, ann: false, gi: 0, ci: -1 };
+const MN = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const MY = { 2026: [4,5,6,7,8,9,10,11,12], 2027: [1,2,3] };
+const $ = id => document.getElementById(id);
 
-/* ═══ STATE ═══ */
-const ST={yr:2026,mo:4,ann:false,gi:0,ci:-1};
-const MN=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-const MY={2026:[4,5,6,7,8,9,10,11,12],2027:[1,2,3]};
-const $=id=>document.getElementById(id);
+const fR = n => 'R$ ' + Math.round(Math.abs(n)).toLocaleString('pt-BR');
+const fRs = n => (n < 0 ? '-R$ ' : 'R$ ') + Math.round(Math.abs(n)).toLocaleString('pt-BR');
+const fK = n => { const a = Math.abs(n); return (n < 0 ? '-' : '') + (a >= 1e6 ? (a/1e6).toFixed(1) + 'M' : a >= 1000 ? (a/1000).toFixed(0) + 'k' : Math.round(a) + ''); };
+const fP = n => (n * 100).toFixed(1) + '%';
+const pill = p => p === 0 ? ['Sem exec.','nn'] : p > 1.1 ? ['Acima','ov'] : p > 1 ? ['Atenção','wn'] : ['OK','ok'];
 
-/* ═══ FORMATTERS ═══ */
-const fR=n=>'R$ '+Math.round(Math.abs(n)).toLocaleString('pt-BR');
-const fRs=n=>(n<0?'-R$ ':'R$ ')+Math.round(Math.abs(n)).toLocaleString('pt-BR');
-const fK=n=>{const a=Math.abs(n);return(n<0?'-':'')+(a>=1e6?(a/1e6).toFixed(1)+'M':a>=1000?(a/1000).toFixed(0)+'k':Math.round(a)+'');};
-const fP=n=>(n*100).toFixed(1)+'%';
-const pill=p=>p===0?['Sem exec.','nn']:p>1.1?['Acima','ov']:p>1?['Atenção','wn']:['OK','ok'];
-
-/* ═══ PDF PARSER ═══ */
 const PDF = {
   async loadFromUrl(url) {
     const response = await fetch(url);
@@ -198,130 +165,107 @@ const PDF = {
     const buffer = await response.arrayBuffer();
     return await this._parseBuffer(buffer);
   },
-
   async _parseBuffer(buffer) {
-    const pdf = await pdfjsLib.getDocument({data:buffer}).promise;
+    const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
     const totalPages = pdf.numPages;
     const allLines = [];
-    
-    for(let p=1;p<=totalPages;p++){
+    for (let p = 1; p <= totalPages; p++) {
       const page = await pdf.getPage(p);
       const content = await page.getTextContent();
       const byY = {};
-      for(const item of content.items){
-        if(!item.str.trim()) continue;
-        const y = Math.round(item.transform[5]/3)*3;
-        if(!byY[y]) byY[y]=[];
-        byY[y].push({x:item.transform[4], text:item.str.trim()});
+      for (const item of content.items) {
+        if (!item.str.trim()) continue;
+        const y = Math.round(item.transform[5] / 3) * 3;
+        if (!byY[y]) byY[y] = [];
+        byY[y].push({ x: item.transform[4], text: item.str.trim() });
       }
-      const ys = Object.keys(byY).map(Number).sort((a,b)=>b-a);
-      for(const y of ys){
-        const items = byY[y].sort((a,b)=>a.x-b.x);
-        allLines.push(items.map(i=>i.text));
+      const ys = Object.keys(byY).map(Number).sort((a,b) => b - a);
+      for (const y of ys) {
+        const items = byY[y].sort((a,b) => a.x - b.x);
+        allLines.push(items.map(i => i.text));
       }
     }
-    
     return this._parseLines(allLines);
   },
-
-  _parseLines(lines){
-    const parseBR = s => { const cleaned = s.replace(/\./g,'').replace(',','.'); const n = parseFloat(cleaned); return isNaN(n)?null:n; };
+  _parseLines(lines) {
+    const parseBR = s => { const cleaned = s.replace(/\./g,'').replace(',','.'); const n = parseFloat(cleaned); return isNaN(n) ? null : n; };
     const isBR = s => /^\d{1,3}(\.\d{3})*(,\d{2})$/.test(s);
     const isDate = s => /^\d{2}\/\d{2}\/\d{4}$/.test(s);
     const isDocNum = s => /^\d{4,6}$/.test(s);
-
     const grupos = {};
     const contas = {};
     const tx = [];
     let curG = '', curC = '';
-
-    for(const tokens of lines){
+    for (const tokens of lines) {
       const flat = tokens.join(' ').trim();
-      if(!flat) continue;
-      if(flat.startsWith('Período') || flat.startsWith('Orçamento:') ||
-         flat.startsWith('PÁG.') || flat.startsWith('ORÇADO x') ||
-         flat.startsWith('Emitido')) continue;
-
-      if(flat.startsWith('Grupo:')){
+      if (!flat) continue;
+      if (flat.startsWith('Período') || flat.startsWith('Orçamento:') || flat.startsWith('PÁG.') || flat.startsWith('ORÇADO x') || flat.startsWith('Emitido')) continue;
+      if (flat.startsWith('Grupo:')) {
         const nameMatch = flat.match(/^Grupo:\s*(.+?)(?:\s+\d{1,3}[\.,])/);
-        if(nameMatch){
+        if (nameMatch) {
           curG = nameMatch[1].trim();
           curC = '';
-          const nums = tokens.filter(t=>isBR(t)).map(parseBR);
-          if(nums.length>0 && nums[0]>0) grupos[curG] = nums[0];
+          const nums = tokens.filter(t => isBR(t)).map(parseBR);
+          if (nums.length > 0 && nums[0] > 0) grupos[curG] = nums[0];
         }
         continue;
       }
-
-      if(isDate(tokens[0])){
+      if (isDate(tokens[0])) {
         const dateParts = tokens[0].split('/');
         const d = tokens[0];
         const m = parseInt(dateParts[1]);
         const a = parseInt(dateParts[2]);
-        
         let docIdx = -1;
-        for(let i=1;i<Math.min(4,tokens.length);i++){
-          if(isDocNum(tokens[i])){docIdx=i;break;}
+        for (let i = 1; i < Math.min(4, tokens.length); i++) {
+          if (isDocNum(tokens[i])) { docIdx = i; break; }
         }
-        const doc = docIdx>=0 ? tokens[docIdx] : '';
-        
-        const lastTok = tokens[tokens.length-1];
+        const doc = docIdx >= 0 ? tokens[docIdx] : '';
+        const lastTok = tokens[tokens.length - 1];
         const val = isBR(lastTok) ? parseBR(lastTok) : null;
-        if(!val || val<=0 || !curG || !curC) continue;
-        
-        const startIdx = docIdx>=0 ? docIdx+1 : 1;
-        const descTokens = tokens.slice(startIdx, tokens.length-1);
-        if(descTokens[0]==='PARCELA' && descTokens[1]==='DE') descTokens.splice(0,2);
-        else if(descTokens[0]==='PARCELA  DE') descTokens.splice(0,1);
+        if (!val || val <= 0 || !curG || !curC) continue;
+        const startIdx = docIdx >= 0 ? docIdx + 1 : 1;
+        const descTokens = tokens.slice(startIdx, tokens.length - 1);
+        if (descTokens[0] === 'PARCELA' && descTokens[1] === 'DE') descTokens.splice(0,2);
+        else if (descTokens[0] === 'PARCELA  DE') descTokens.splice(0,1);
         const dsc = descTokens.join(' ').trim();
-        
-        tx.push({g:curG, c:curC, a, m, d, doc, dsc, v:Math.round(val*100)/100});
+        tx.push({ g: curG, c: curC, a, m, d, doc, dsc, v: Math.round(val * 100) / 100 });
         continue;
       }
-
-      const brNums = tokens.filter(t=>isBR(t));
-      if(brNums.length>=2 && curG){
-        const nameParts = tokens.filter(t=>!isBR(t)&&!isDate(t)&&!isDocNum(t));
+      const brNums = tokens.filter(t => isBR(t));
+      if (brNums.length >= 2 && curG) {
+        const nameParts = tokens.filter(t => !isBR(t) && !isDate(t) && !isDocNum(t));
         const name = nameParts.join(' ').trim();
-        if(name && name.length>2 && !name.startsWith('Período') && !name.startsWith('Grupo')){
+        if (name && name.length > 2 && !name.startsWith('Período') && !name.startsWith('Grupo')) {
           const orc = parseBR(brNums[0]);
-          if(orc && orc>0){
+          if (orc && orc > 0) {
             curC = name;
-            contas[curG+'|'+curC] = orc;
+            contas[curG + '|' + curC] = orc;
           }
         }
       }
     }
-
-    tx.sort((a,b)=>{
-      if(a.a!==b.a)return a.a-b.a;
-      if(a.m!==b.m)return a.m-b.m;
-      const da=parseInt(a.d.split('/')[0]),db=parseInt(b.d.split('/')[0]);
-      return da-db;
+    tx.sort((a,b) => {
+      if (a.a !== b.a) return a.a - b.a;
+      if (a.m !== b.m) return a.m - b.m;
+      const da = parseInt(a.d.split('/')[0]), db = parseInt(b.d.split('/')[0]);
+      return da - db;
     });
-
     const groupTotals = {};
-    for(const [key, orc] of Object.entries(contas)){
+    for (const [key, orc] of Object.entries(contas)) {
       const group = key.split('|')[0];
-      if(!groupTotals[group]) groupTotals[group] = 0;
+      if (!groupTotals[group]) groupTotals[group] = 0;
       groupTotals[group] += orc;
     }
-
     console.log('✅ Grupos:', Object.keys(groupTotals).length);
     console.log('✅ Contas:', Object.keys(contas).length);
     console.log('✅ Transações:', tx.length);
-
-    return {
-      totalAnual: Object.values(groupTotals).reduce((s,v)=>s+v,0),
-      grupos: groupTotals,
-      contas: contas,
-      tx: tx
-    };
+    return { totalAnual: Object.values(groupTotals).reduce((s,v) => s + v, 0), grupos: groupTotals, contas: contas, tx: tx };
   }
 };
 
-/* ═══ DATA QUERIES ═══ */
-const DQ={
-  txFor(g,c){
-    if(ST.ann) return RAW.tx.filter(t=>t.g===g&&t.c===c);
-    return RAW.tx.filter(t=>t.g
+const DQ = {
+  txFor(g, c) {
+    if (ST.ann) return RAW.tx.filter(t => t.g === g && t.c === c);
+    return RAW.tx.filter(t => t.g === g && t.c === c && t.a === ST.yr && t.m === ST.mo);
+  },
+  real(g, c) { return this.txFor(g, c).reduce((s
