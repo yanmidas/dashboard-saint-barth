@@ -639,9 +639,36 @@ const SB={
   gT(gi,el){const g=$('gl');this.g(gi,g.children[gi]||el);}
 };
 
-/* ═══ BOOT ═══ */
-F.init();
-R.boot();
+/* ═══ AUTO LOAD PDF ═══ */
+(async function autoLoadPDF() {
+  const overlay = $('pdf-overlay');
+  const status = $('pdf-status');
+  const progress = $('pdf-progress');
+  const bar = $('pdf-progress-bar');
+
+  try {
+    overlay.classList.add('show');
+    if (status) status.textContent = 'Carregando PDF automaticamente...';
+    if (progress) progress.style.display = 'block';
+    if (bar) bar.style.width = '30%';
+
+    const response = await fetch('relatorio.pdf');
+    if (!response.ok) throw new Error('PDF não encontrado');
+    const blob = await response.blob();
+    if (bar) bar.style.width = '80%';
+    const file = new File([blob], 'relatorio.pdf', { type: 'application/pdf' });
+    // Reaproveita o parser completo já existente
+    await PDF._load(file);
+    return; // sucesso: _load fecha o overlay e chama F.init() + R.boot()
+  } catch (err) {
+    console.warn('Auto-load do PDF falhou, usando dados offline:', err.message);
+    if (status) status.textContent = 'Usando dados offline.';
+  }
+  // Fallback: fecha overlay e inicia com dados padrão
+  setTimeout(() => overlay.classList.remove('show'), 1200);
+  F.init();
+  R.boot();
+})();
 </script>
 </body>
 </html>
